@@ -155,23 +155,23 @@ pub fn main() {
     prepare_gift(&mut elves_gift);
     prepare_gift(&mut reindeer_gift);
 
-    if let Ok(_) = santa.give_gift(&mut alice, &kids_gift) {
+    if santa.give_gift(&mut alice, &kids_gift).is_ok() {
         println!("{} received {}", alice.name, kids_gift);
-        assert_eq!(alice.gifted, true);
+        assert!(alice.gifted);
     } else {
         panic!("{} should have received {}", alice.name, kids_gift);
     }
 
-    if let Ok(_) = santa.give_gift(&mut prancer, &reindeer_gift) {
+    if santa.give_gift(&mut prancer, &reindeer_gift).is_ok() {
         println!("{} received {}", prancer.name, reindeer_gift);
-        assert_eq!(prancer.gifted, true);
+        assert!(prancer.gifted);
     } else {
         panic!("{} should have received {}", prancer.name, reindeer_gift);
     }
 
-    if let Ok(_) = santa.give_gift(&mut bernard, &elves_gift) {
+    if santa.give_gift(&mut bernard, &elves_gift).is_ok() {
         println!("{} received {}", bernard.name, elves_gift);
-        assert_eq!(bernard.gifted, true);
+        assert!(bernard.gifted);
     } else {
         panic!("{} should have received {}", bernard.name, elves_gift);
     }

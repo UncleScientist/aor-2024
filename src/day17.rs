@@ -40,6 +40,6 @@ pub fn main() {
 
     for email in emails {
         let anonymized_email = email.anonymize_email(); // This is the API that Santa wants!
-        println!("Original: {} -> Anonymized: {}", email, anonymized_email);
+        println!("Original: {email} -> Anonymized: {anonymized_email}");
     }
 }

@@ -13,14 +13,20 @@ pub struct SleighBuilder {
     magical_enhancements: bool,
 }
 
-impl SleighBuilder {
-    pub fn new() -> Self {
+impl Default for SleighBuilder {
+    fn default() -> Self {
         Self {
             color: "red".into(),
             engine: "reindeer-powered".into(),
             gift_capacity: 100,
             magical_enhancements: false,
         }
+    }
+}
+
+impl SleighBuilder {
+    pub fn new() -> Self {
+        Self::default()
     }
 
     pub fn color<S: AsRef<str>>(mut self, color: S) -> Self {
@@ -90,5 +96,5 @@ pub fn main() {
     assert_eq!(sleigh.color(), "gold");
     assert_eq!(sleigh.engine(), "magic");
     assert_eq!(sleigh.gift_capacity(), 350);
-    assert_eq!(sleigh.magical_enhancements(), true);
+    assert!(sleigh.magical_enhancements());
 }

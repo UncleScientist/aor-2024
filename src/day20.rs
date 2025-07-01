@@ -28,6 +28,12 @@ pub struct Sleigh<T: Status> {
     pub state: PhantomData<T>,
 }
 
+impl Default for Sleigh<Empty> {
+    fn default() -> Self {
+        Self { state: PhantomData }
+    }
+}
+
 impl<T: Status> Sleigh<T> {
     pub fn status(&self) -> &'static str {
         T::status()
@@ -36,7 +42,7 @@ impl<T: Status> Sleigh<T> {
 
 impl Sleigh<Empty> {
     pub fn new() -> Self {
-        Self { state: PhantomData }
+        Self::default()
     }
 
     pub fn load(self) -> Sleigh<Ready> {
